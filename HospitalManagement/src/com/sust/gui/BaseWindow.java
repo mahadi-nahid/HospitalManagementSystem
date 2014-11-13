@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -16,6 +17,7 @@ public class BaseWindow extends javax.swing.JFrame
 
     public BaseWindow() {
         super("Base Winfow");
+        addLookAndFeel();
         initComponents();
         setPosition();
         setVisible(true);
@@ -28,6 +30,23 @@ public class BaseWindow extends javax.swing.JFrame
 
     }
 
+    public void addLookAndFeel() {
+         try {
+            // select Look and Feel
+             UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
+             //com.jtattoo.plaf.texture.TextureLookAndFeel
+             //com.jtattoo.plaf.hifi.HiFiLookAndFeel
+             //com.jtattoo.plaf.noire.NoireLookAndFeel
+             //com.jtattoo.plaf.aero.AeroLookAndFeel
+                     
+
+            // start application
+            
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     private void addingActionListeners() {
 
         indoorPatientItem.addActionListener(this);
@@ -73,6 +92,7 @@ public class BaseWindow extends javax.swing.JFrame
     @Override
     public void actionPerformed(ActionEvent event) {
 
+        addLookAndFeel();
         if (event.getSource() == indoorPatientItem) {
             new IndoorPatientAdmForm();
         } else if (event.getSource() == outdoorPatientItem) {
